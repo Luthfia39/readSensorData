@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:id="@+id/layout">
+    android:id="@+id/layout"
+    android:layout_margin="30dp">
 
     <ScrollView
 
@@ -28,11 +29,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Proximity sensor : %1$.2f"/>
-
             <TextView
-                android:id="@+id/sensor_list"
+                android:id="@+id/label_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Temperature sensor : %1$.2f"/>
+            <TextView
+                android:id="@+id/sensor_list1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Sensor List :"/>
+            <TextView
+                android:id="@+id/sensor_list2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="Placeholder"/>
         </LinearLayout>
 

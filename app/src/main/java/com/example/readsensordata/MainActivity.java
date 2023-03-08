@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             sensorText.append(currentSensor.getName()).append(System.getProperty("line.separator"));
         }
 
-        TextView sensorTextView = findViewById(R.id.sensor_list);
+        TextView sensorTextView = findViewById(R.id.sensor_list2);
         sensorTextView.setText(sensorText);
 
 //        inisialisasi
