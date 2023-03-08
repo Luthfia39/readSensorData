@@ -94,6 +94,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 break;
             default:
         };
+        if (currentValue >= 20000 && currentValue <= 40000){
+            findViewById(R.id.layout).setBackgroundColor(getResources().getColor(R.color.red));
+        }
+        else if(currentValue >= 0 && currentValue < 20000){
+            findViewById(R.id.layout).setBackgroundColor(getResources().getColor(R.color.teal_700));
+        }
+
     }
 
     @Override
