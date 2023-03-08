@@ -19,10 +19,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //    mengambil atribut sensor
     private Sensor mSensorProximity;
     private Sensor mSensorLight;
+    private Sensor mSensorTemp;
+    private Sensor mSensorPressure;
+    private Sensor mSensorHumidity;
 
     private TextView mTextSensorLight;
     private TextView mTextSensorProximity;
-
+    private TextView mTextSensorTemp;
+    private TextView mTextSensorPressure;
+    private TextView mTextSensorHumidity;
 
 
     @Override
@@ -47,9 +52,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //        inisialisasi
         mTextSensorLight = findViewById(R.id.label_light);
         mTextSensorProximity = findViewById(R.id.label_proximity);
+        mTextSensorTemp = findViewById(R.id.label_temperature);
+        mTextSensorPressure = findViewById(R.id.label_pressure);
+        mTextSensorHumidity = findViewById(R.id.label_humidity);
 
         mSensorProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
         mSensorLight = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        mSensorTemp = mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+        mSensorPressure = mSensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
+        mSensorHumidity = mSensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
 
 //        cek sensor apakah ada atau tidak
         String sensor_error = "No Sensor";
@@ -58,6 +69,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         if (mSensorProximity == null){
             mTextSensorProximity.setText(sensor_error);
+        }
+        if (mSensorTemp == null){
+            mTextSensorTemp.setText(sensor_error);
+        }
+        if (mSensorPressure == null){
+            mTextSensorPressure.setText(sensor_error);
+        }
+        if (mSensorHumidity == null){
+            mTextSensorHumidity.setText(sensor_error);
         }
     }
 
@@ -70,6 +90,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         if (mSensorLight != null){
             mSensorManager.registerListener(this, mSensorLight, SensorManager.SENSOR_DELAY_NORMAL);
+        }
+        if (mSensorTemp != null){
+            mSensorManager.registerListener(this, mSensorTemp, SensorManager.SENSOR_DELAY_NORMAL);
+        }
+        if (mSensorPressure != null){
+            mSensorManager.registerListener(this, mSensorPressure, SensorManager.SENSOR_DELAY_NORMAL);
+        }
+        if (mSensorHumidity != null){
+            mSensorManager.registerListener(this, mSensorHumidity, SensorManager.SENSOR_DELAY_NORMAL);
         }
     }
 
@@ -92,14 +121,24 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             case Sensor.TYPE_PROXIMITY:
                 mTextSensorProximity.setText(String.format("Proximity Sensor : %1$.2f", currentValue));
                 break;
+            case Sensor.TYPE_AMBIENT_TEMPERATURE:
+                mTextSensorTemp.setText(String.format("Temperature Sensor : %1$.2f", currentValue));
+                break;
+            case Sensor.TYPE_PRESSURE:
+                mTextSensorPressure.setText(String.format("Pressure Sensor : %1$.2f", currentValue));
+                break;
+            case Sensor.TYPE_RELATIVE_HUMIDITY:
+                mTextSensorHumidity.setText(String.format("Humidity Sensor : %1$.2f", currentValue));
+                break;
             default:
         };
-        if (currentValue >= 20000 && currentValue <= 40000){
-            findViewById(R.id.layout).setBackgroundColor(getResources().getColor(R.color.red));
-        }
-        else if(currentValue >= 0 && currentValue < 20000){
-            findViewById(R.id.layout).setBackgroundColor(getResources().getColor(R.color.teal_700));
-        }
+//        mengganti background berdasarkan sensor light
+//        if (currentValue >= 20000 && currentValue <= 40000){
+//            findViewById(R.id.layout).setBackgroundColor(getResources().getColor(R.color.red));
+//        }
+//        else if(currentValue >= 0 && currentValue < 20000){
+//            findViewById(R.id.layout).setBackgroundColor(getResources().getColor(R.color.teal_700));
+//        }
 
     }
 
