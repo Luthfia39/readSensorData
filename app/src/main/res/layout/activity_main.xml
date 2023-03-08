@@ -12,11 +12,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
-        <TextView
-            android:id="@+id/sensor_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Placeholder"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/label_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Light sensor : %1$.2f"/>
+            <TextView
+                android:id="@+id/label_proximity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Proximity sensor : %1$.2f"/>
+
+            <TextView
+                android:id="@+id/sensor_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placeholder"/>
+        </LinearLayout>
+
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
