@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import java.util.List;
-// SensorEventListener : memberi tahu kalo ada perubahan data sensor
+
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager mSensorManager;
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //        }
 
     }
-
+//    dipanggil ketika keakuratan sensor berubah
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) { }
 }
