@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 //        menampung sensor, tipe data : object sensor
         List<Sensor> sensorList = mSensorManager.getSensorList(Sensor.TYPE_ALL);
-//
+
 //        cek nama sensor, diubah menjadi string, kemudian disimpan
         StringBuilder sensorText = new StringBuilder();
 
@@ -57,10 +57,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         mTextSensorPressure = findViewById(R.id.label_pressure);
         mTextSensorHumidity = findViewById(R.id.label_humidity);
 
+//        untuk mendeteksi jarak objek yg ada di sekitar. digunakan ketika bertelepon
         mSensorProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+//        untuk mengatur kecerahan cahaya pada layar/mengubah mode kecerahan layar ke otomatis
         mSensorLight = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+//        untuk mendeteksi suhu perangkat dan baterai
         mSensorTemp = mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+//        untuk mengecek apakah perangkat berada di dalam air atau tidak
         mSensorPressure = mSensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
+//        untuk mengetahui kelembaban udara sekitar
         mSensorHumidity = mSensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
 
 //        cek sensor apakah ada atau tidak
@@ -86,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onStart() {
         super.onStart();
-//        untuk mendeteksi jarak objek yg ada di sekitar. DImanf
         if (mSensorProximity != null){
             mSensorManager.registerListener(this, mSensorProximity, SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -99,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (mSensorPressure != null){
             mSensorManager.registerListener(this, mSensorPressure, SensorManager.SENSOR_DELAY_NORMAL);
         }
+
         if (mSensorHumidity != null){
             mSensorManager.registerListener(this, mSensorHumidity, SensorManager.SENSOR_DELAY_NORMAL);
         }
