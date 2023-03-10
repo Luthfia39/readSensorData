@@ -3,6 +3,7 @@ package com.example.readsensordata;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -139,15 +140,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 break;
             default:
         };
-
 //        mengganti background berdasarkan sensor light
-//        if (currentValue >= 20000 && currentValue <= 40000){
-//            findViewById(R.id.layout).setBackgroundColor(getResources().getColor(R.color.red));
-//        }
-//        else if(currentValue >= 0 && currentValue < 20000){
-//            findViewById(R.id.layout).setBackgroundColor(getResources().getColor(R.color.teal_700));
-//        }
-
+        if (currentValue > 20000 && currentValue <= 40000){
+            findViewById(R.id.layout).setBackgroundColor(Color.RED);
+        }
+        else if(currentValue >= 0 && currentValue < 20000){
+            findViewById(R.id.layout).setBackgroundColor(Color.BLUE);
+        }
     }
 //    dipanggil ketika keakuratan sensor berubah
     @Override
