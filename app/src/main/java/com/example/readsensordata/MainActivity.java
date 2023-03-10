@@ -38,14 +38,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 //        menampung sensor, tipe data : object sensor
         List<Sensor> sensorList = mSensorManager.getSensorList(Sensor.TYPE_ALL);
-//        menyimpan data sensor
-//        untuk mengetahui namanya, diubah menjadi string
+//
+//        cek nama sensor, diubah menjadi string, kemudian disimpan
         StringBuilder sensorText = new StringBuilder();
 
         for (Sensor currentSensor : sensorList){
             sensorText.append(currentSensor.getName()).append(System.getProperty("line.separator"));
         }
 
+//        menampilkan daftar sensor
         TextView sensorTextView = findViewById(R.id.sensor_list2);
         sensorTextView.setText(sensorText);
 
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onStart() {
         super.onStart();
+//        untuk mendeteksi jarak objek yg ada di sekitar. DImanf
         if (mSensorProximity != null){
             mSensorManager.registerListener(this, mSensorProximity, SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -132,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 break;
             default:
         };
+
 //        mengganti background berdasarkan sensor light
 //        if (currentValue >= 20000 && currentValue <= 40000){
 //            findViewById(R.id.layout).setBackgroundColor(getResources().getColor(R.color.red));
@@ -143,7 +146,5 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {
-
-    }
+    public void onAccuracyChanged(Sensor sensor, int i) { }
 }
